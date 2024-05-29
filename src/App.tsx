@@ -15,23 +15,19 @@ const initialBookVal: IBook = {
   file: null,
 };
 
-// const book = {
-//   name: book.name,
-//   description: book.description,
-//   isbn: book.isbn,
-//   author: book.author,
-// };
 
 export default function App() {
   const [book, setBook] = useState(initialBookVal);
 
   const queryClient = useQueryClient();
 
+  // Hooks useQuery untuk bantu cache
   const query = useQuery({
     queryKey: ["books"], // key untuk caching ke browser dengan nama/label apa, untuk invalidate (dihapus - dicache ulang)
     queryFn: bookServices.getData,
   });
 
+  // Untuk melakukan C/U/D 
   const { mutate: handleAddBook } = useMutation({
     mutationFn: bookServices.createData,
     onSuccess: () => {
@@ -43,30 +39,12 @@ export default function App() {
       toast.error(error.message);
     },
   });
-  // async function createData() {
-  //   const res = await fetch("http://localhost:8000/books", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(book),
-  //   });
-  //   const data = await res.json();
-  //   console.log(data);
-  //   getData();
-  //   setBook(initialBookVal);
-  // }
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
 
   return (
     <div className="flex justify-center my-20">
       <main className="w-[400px] space-y-4">
         <h1 className="text-2xl font-bold">Books</h1>
         <section className="p-2">
-          {/* input form */}
           <div className="mb-4 space-y-2">
             <div>
               <Label htmlFor="name" className="font-semibold">
@@ -134,18 +112,24 @@ export default function App() {
           </Button>
         </section>
         {query.data?.length === 0 ? <div>There is no data</div> : null}
-        <section>
-          {query.data?.map((book) => {
-            return (
-              <div key={book._id}>
-                <div>{book.name}</div>
-                <div>{book.description}</div>
-                <div>{book.isbn}</div>
-                <div>{book.author}</div>
-              </div>
-            );
-          })}
-        </section>
+        {query.isLoading ? <div>Loading...</div> : null}
+        {query.isError ? (
+          <div>Page error</div>
+        ) : (
+          <section>
+            {query.data?.map((book) => {
+              return (
+                <div key={book._id}>
+                  <div>{book.name}</div>
+                  <div>{book.description}</div>
+                  <div>{book.isbn}</div>
+                  <div>{book.author}</div>
+                  <div><img src={`http://localhost:8000/${book.file}`} width={800} height={800}/></div>
+                </div>
+              );
+            })}
+          </section>
+        )}
       </main>
     </div>
   );
