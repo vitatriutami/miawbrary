@@ -1,7 +1,8 @@
 export interface IBook {
-  id?: string;
+  _id?: string;
   name: string;
   description: string;
   isbn: string;
   author: string;
+  file: null | FileList | string;
 }
