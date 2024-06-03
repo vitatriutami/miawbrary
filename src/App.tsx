@@ -1,136 +1,46 @@
-import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import { Input } from "./components/ui/input";
-import { Label } from "@radix-ui/react-label";
-import { Button } from "./components/ui/button";
-import { bookServices } from "./services/bookServices";
-import { toast } from "sonner";
-import { IBook } from "./types/entity";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./pages/home";
+import BookDetail from "./pages/Books/bookDetail";
+import Login from "./pages/Auth/login";
+import Register from "./pages/Auth/register";
+import Landing from "./pages/landing";
+import Admin from "./pages/Admin/admin";
+import BookCatalog from "./pages/Books/bookCatalog";
+import DashboardLayout from "./layout/PagesLayout";
+import Profile from "./pages/profile";
+import Events from "./pages/events";
+import Faq from "./pages/faq";
+import About from "./pages/about";
+import Settings from "./pages/settings";
+import SingleDataAdmin from "./pages/Admin/singleDataAdmin";
 
-const initialBookVal: IBook = {
-  name: "",
-  description: "",
-  isbn: "",
-  author: "",
-  file: null,
-};
-
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<DashboardLayout />}>
+        <Route path="/" element={<Landing />} />
+        <Route path="home" element={<Home />} />
+        <Route path="books" element={<BookCatalog />} />
+        <Route path="books/:id" element={<BookDetail />} />
+        <Route path="admin" element={<Admin />} />
+        <Route path="admin/:id" element={<SingleDataAdmin />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="about" element={<About />} />
+        <Route path="events" element={<Events />} />
+        <Route path="faq" element={<Faq />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
+    </>
+  )
+);
 
 export default function App() {
-  const [book, setBook] = useState(initialBookVal);
-
-  const queryClient = useQueryClient();
-
-  // Hooks useQuery untuk bantu cache
-  const query = useQuery({
-    queryKey: ["books"], // key untuk caching ke browser dengan nama/label apa, untuk invalidate (dihapus - dicache ulang)
-    queryFn: bookServices.getData,
-  });
-
-  // Untuk melakukan C/U/D 
-  const { mutate: handleAddBook } = useMutation({
-    mutationFn: bookServices.createData,
-    onSuccess: () => {
-      queryClient.invalidateQueries();
-      toast.success("Buku berhasil ditambahkan");
-      setBook(initialBookVal);
-    },
-    onError: (error: { message: string }) => {
-      toast.error(error.message);
-    },
-  });
-
-  return (
-    <div className="flex justify-center my-20">
-      <main className="w-[400px] space-y-4">
-        <h1 className="text-2xl font-bold">Books</h1>
-        <section className="p-2">
-          <div className="mb-4 space-y-2">
-            <div>
-              <Label htmlFor="name" className="font-semibold">
-                Book Title
-              </Label>
-              <Input
-                id="name"
-                value={book.name}
-                placeholder="name"
-                onChange={(e) => setBook({ ...book, name: e.target.value })}
-              />
-            </div>
-            <div>
-              <Label htmlFor="description" className="font-semibold">
-                Description
-              </Label>
-              <Input
-                id="description"
-                value={book.description}
-                placeholder="description"
-                onChange={(e) =>
-                  setBook({ ...book, description: e.target.value })
-                }
-              />
-            </div>
-            <div>
-              <Label htmlFor="isbn" className="font-semibold">
-                ISBN
-              </Label>
-              <Input
-                id="isbn"
-                value={book.isbn}
-                placeholder="isbn"
-                onChange={(e) => setBook({ ...book, isbn: e.target.value })}
-              />
-            </div>
-            <div>
-              <Label htmlFor="author" className="font-semibold">
-                Author
-              </Label>
-              <Input
-                id="author"
-                value={book.author}
-                placeholder="author"
-                onChange={(e) => setBook({ ...book, author: e.target.value })}
-              />
-            </div>
-            <div>
-              <Label htmlFor="upload">Upload</Label>
-              <Input
-                id="upload"
-                type="file"
-                onChange={(e) =>
-                  setBook({ ...book, file: e.target.files as FileList })
-                }
-              />
-            </div>
-          </div>
-          <Button
-            onClick={() => {
-              handleAddBook(book);
-            }}
-          >
-            Submit book
-          </Button>
-        </section>
-        {query.data?.length === 0 ? <div>There is no data</div> : null}
-        {query.isLoading ? <div>Loading...</div> : null}
-        {query.isError ? (
-          <div>Page error</div>
-        ) : (
-          <section>
-            {query.data?.map((book) => {
-              return (
-                <div key={book._id}>
-                  <div>{book.name}</div>
-                  <div>{book.description}</div>
-                  <div>{book.isbn}</div>
-                  <div>{book.author}</div>
-                  <div><img src={`http://localhost:8000/${book.file}`} width={800} height={800}/></div>
-                </div>
-              );
-            })}
-          </section>
-        )}
-      </main>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
