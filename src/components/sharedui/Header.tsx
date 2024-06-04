@@ -241,10 +241,14 @@ export const Header = () => {
         ) : (
           <div className="flex items-center gap-4">
             <Link to="/login">
-              <div>Login</div>
+              <div className="font-semibold hover:font-bold px-2 text-orange-700">
+                Login
+              </div>
             </Link>
             <Link to="/register">
-              <Button>Get Started</Button>
+              <Button className="font-semibold hover:font-bold px-2 rounded-xl bg-orange-200 hover:bg-orange-400  text-black">
+                Get Started
+              </Button>
             </Link>
           </div>
         )}
