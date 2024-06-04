@@ -133,7 +133,7 @@ export const Header = () => {
                 <div className="absolute -top-3 -right-1">
                   <div className="relative">
                     {/* <FaHeart className="text-red-500" /> */}
-                    <p className="px-1 h-fit bg-red-500 text-white rounded-xl shadow-md text-sm">
+                    <p className="px-2 w-fit bg-red-500 text-white rounded-full shadow-md text-sm">
                       1
                     </p>
                   </div>

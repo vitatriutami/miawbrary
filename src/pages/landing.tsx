@@ -102,26 +102,26 @@ export default function Landing() {
           <div className="flex flex-col justify-center items-center space-y-2">
             <h2 className="text-xl font-semibold">Quick Menu</h2>
             <ul className="space-y-2">
-              <Link to="/about" className="w-fit mx-auto relative group">
-                <li>
+              <Link to="/about">
+                <li className="w-fit mx-auto relative group">
                   About Us
                   <div className="nav-line" />
                 </li>
               </Link>
-              <Link to="/books" className="w-fit mx-auto relative group">
-                <li>
+              <Link to="/books">
+                <li className="w-fit mx-auto relative group">
                   Books
                   <div className="nav-line" />
                 </li>
               </Link>
-              <Link to="/events" className="w-fit relative group">
-                <li>
+              <Link to="/events">
+                <li className="w-fit mx-auto relative group">
                   Events
                   <div className="nav-line" />
                 </li>
               </Link>
-              <Link to="/faq" className="w-fit relative group">
-                <li>
+              <Link to="/faq">
+                <li className="w-fit mx-auto relative group">
                   FaQ
                   <div className="nav-line" />
                 </li>
@@ -129,20 +129,29 @@ export default function Landing() {
             </ul>
           </div>
           <div className="flex flex-col my-auto space-y-4">
-            <div>
-              <h2 className="font-semibold">Subscribe for newsletter</h2>
-              <div className="flex gap-2">
-                <Input placeholder="youremail@mail.com" />
-                <Button className="border-2 border-black rounded-xl hover:scale-105">
-                  Subscribe
-                </Button>
-              </div>
+            <h2 className="font-semibold">Subscribe for newsletter</h2>
+            <div className="flex gap-2">
+              <Input
+                placeholder="youremail@mail.com"
+                className="text-slate-600"
+              />
+              <Button className="border-2 border-black rounded-xl hover:scale-105">
+                Subscribe
+              </Button>
             </div>
             <div className="flex gap-2">
-              <FaFacebook />
-              <FaXTwitter />
-              <RiInstagramFill />
-              <IoLogoYoutube />
+              <button>
+                <FaFacebook size={20} />
+              </button>
+              <button>
+                <FaXTwitter size={20} />
+              </button>
+              <button>
+                <RiInstagramFill size={20} />
+              </button>
+              <button>
+                <IoLogoYoutube size={20} />
+              </button>
             </div>
           </div>
         </div>

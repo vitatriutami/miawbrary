@@ -6,11 +6,11 @@ export const HomeHero = () => {
   const { user } = useAuth({});
 
   return (
-    <main className="relative lg:w-[1000px] md:w-[500px] w-[300px] py-10 bg-gradient-to-r from-yellow-400 to-yellow-200 p-3 rounded-xl  flex flex-col justify-center items-center text-center space-y-4">
+    <main className="relative lg:w-[800px] md:w-[500px] w-[300px] py-10 bg-gradient-to-r from-yellow-400 to-yellow-200 p-3 rounded-xl  flex flex-col justify-center items-center text-center space-y-4 mb-14">
       <img
         src={HiCat}
         alt="Cat Welcoming"
-        className="lg:w-52 sm:w-32 w-32 md:w-44 absolute -bottom-14 sm:-right-14 -right-16 lg:-right-12"
+        className="lg:w-52 sm:w-32 w-32 md:w-44 absolute -bottom-10 md:-bottom-16  md:-right-16 -right-12 lg:-right-18 lg:-bottom-16"
       />
       <div>
         <h1 className="text-3xl">

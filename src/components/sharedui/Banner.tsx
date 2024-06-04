@@ -30,15 +30,24 @@ const Banner = () => {
                 <div className="space-y-5">
                   <div className="flex items-center gap-3">
                     <BookCheck className="text-2xl h-12 w-12 shadow-sm p-3 rounded-full bg-red-100 " />
-                    <span>Borrow Books</span>
+                    <span className="cursor-pointer relative group">
+                      Borrow Books
+                      <div className="nav-line" />
+                    </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <BookHeart className="text-2xl h-12 w-12 shadow-sm p-3 rounded-full bg-orange-100 " />
-                    <span>Reading List</span>
+                    <span className="cursor-pointer relative group">
+                      Reading List
+                      <div className="nav-line" />
+                    </span>
                   </div>
                   <div data-aos-delay="500" className="flex items-center gap-3">
                     <CalendarMinus2 className="text-4xl h-12 w-12 shadow-sm p-3 rounded-full bg-yellow-100" />
-                    <span>Join Event</span>
+                    <span className="cursor-pointer relative group">
+                      Join Event
+                      <div className="nav-line" />
+                    </span>
                   </div>
                 </div>
               </div>

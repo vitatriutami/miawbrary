@@ -19,7 +19,7 @@ export default function Home() {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
 
   return (
-    <main className="min-h-screen lg:flex lg:items-start">
+    <main className="min-h-screen w-screen lg:flex lg:items-start">
       <div className="space-y-20 flex flex-col justify-center items-center ">
         <HomeHero />
         {query.data?.length === 0 ? (
@@ -75,11 +75,10 @@ export default function Home() {
           </main>
         </section>
       </div>
-      <div className="w-[400px] hidden md:hidden lg:block">
+      <div className="hidden md:hidden lg:block mx-auto">
         <div className="flex flex-col items-center px-6 space-y-6">
           <div className="h-[400px] bg-gradient-to-t from-blue-400 to-blue-200 rounded-xl p-2">
             <h1 className="text-2xl font-semibold text-center">Event</h1>
-
             <Calendar
               mode="single"
               selected={date}

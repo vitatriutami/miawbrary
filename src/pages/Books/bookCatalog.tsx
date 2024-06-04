@@ -36,7 +36,7 @@ export default function BookCatalog() {
             />
             <div>
               <h1 className="text-3xl font-semibold">
-                Find book your cat want to read!
+                Find book your cat want to read! 🐱🎀
               </h1>
               <p>Lorem ipsum dolor sit amet consectetur</p>
             </div>

@@ -14,7 +14,7 @@ export default function PagesLayout() {
         <Headroom>
           <Header />
         </Headroom>
-        <div className="container px-8 pt-8 pb-4">
+        <div className="container px-8 pt-6 pb-4">
           <Outlet />
         </div>
         <Footer />

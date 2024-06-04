@@ -15,7 +15,7 @@ export const SearchInput = () => {
     <main className="lg:w-[700px] ">
       <Input
         placeholder="Search book, author, description"
-        className="placeholder:text-slate-500 border-2"
+        className="placeholder:text-slate-700 border-2 font-semibold tracking-widest border-red-700 hover:border-red-500"
         onChange={(e) => setSearchKey(e.target.value)}
         onKeyUp={handleSearch}
       />

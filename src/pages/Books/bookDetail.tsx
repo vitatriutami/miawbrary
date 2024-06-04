@@ -33,10 +33,10 @@ export default function BookDetail() {
   return (
     <div className="min-h-screen">
       <main className="space-y-12 px-10">
-        <section className="grid md:grid-cols-2 gap-8 max-w-7xl m-auto">
-          <div className="border-r-2 border-black">
+        <section className="grid md:grid-cols-2 gap-8 max-w-7xl m-auto bg-gradient-to-r from-yellow-400 to-yellow-200 rounded-2xl">
+          <div className="border-r-2 border-black bg-gradient-to-l from-emerald-400 to-emerald-200 flex justify-center items-center rounded-s-2xl p-10">
             {query.isLoading ? (
-              <div className="flex flex-col justify-center items-center space-y-6">
+              <div className="flex flex-col justify-center items-center space-y-6 m-auto">
                 <img
                   src={Loading}
                   className="h-40 drop-shadow-[10px_-10px_12px_rgba(0,0,0,0.4)]"
@@ -57,8 +57,6 @@ export default function BookDetail() {
             ) : (
               <img
                 src={`${API_URL}/${query.data?.file}`}
-                width={400}
-                height={400}
                 alt="book_cover"
                 className="rounded-lg"
               />
@@ -70,7 +68,7 @@ export default function BookDetail() {
               query.data?.isAvailable === undefined ? (
                 <div className="flex gap-3 items-center">
                   <Button
-                    className="bg-gradient-to-t from-red-500 to-red-300 rounded-xl hover:scale-105 transition-all duration-400 hover:font-bold"
+                    className="bg-gradient-to-t from-red-500 to-red-400 rounded-xl hover:scale-105 transition-all duration-400 hover:font-bold"
                     onClick={() => handleBorrowBook()}
                   >
                     Borrow
@@ -95,8 +93,8 @@ export default function BookDetail() {
                 <p>{query.data?.author}</p>
               </div>
             </div>
-            <p>{query.data?.description}</p>
-            <p className="text-slate-700">ISBN: {query.data?.isbn}</p>
+            <p className="mx-4">{query.data?.description}</p>
+            <p className="text-slate-700 py-6">ISBN: {query.data?.isbn}</p>
           </div>
         </section>
       </main>

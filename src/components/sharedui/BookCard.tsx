@@ -11,7 +11,7 @@ export const BookCard = ({ book }: { book: IBook }) => {
         <div className="flex flex-col justify-between items-center">
           <img
             src={`${API_URL}/${book.file}`}
-            alt="book cover"
+            alt="book_cover"
             width={100}
             height={100}
           />

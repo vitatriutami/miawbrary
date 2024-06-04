@@ -37,10 +37,8 @@ export const bookServices = {
     return data;
   },
   updateData: async (id: string) => {
-    const res = await fetch(`${API_URL}/books/${id}`, {
+    const res = await fetch(`${API_URL}/api/v1/books/${id}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ bookId: id }),
     });
     const data = await res.json();
     return data;
