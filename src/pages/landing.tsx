@@ -102,6 +102,12 @@ export default function Landing() {
           <div className="flex flex-col justify-center items-center space-y-2">
             <h2 className="text-xl font-semibold">Quick Menu</h2>
             <ul className="space-y-2">
+              <Link to="/home">
+                <li className="w-fit mx-auto relative group">
+                  Home
+                  <div className="nav-line" />
+                </li>
+              </Link>
               <Link to="/about">
                 <li className="w-fit mx-auto relative group">
                   About Us

@@ -246,7 +246,7 @@ export const Header = () => {
               </div>
             </Link>
             <Link to="/register">
-              <Button className="font-semibold hover:font-bold px-2 rounded-xl bg-orange-200 hover:bg-orange-400  text-black">
+              <Button className="font-semibold px-2 bg-gradient-to-t from-orange-400 to-orange-200 rounded-xl hover:scale-105 transition-all duration-400 hover:font-bold  text-black">
                 Get Started
               </Button>
             </Link>
