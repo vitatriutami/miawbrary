@@ -22,11 +22,13 @@ export default function Login() {
             <p>Welcome Back!</p>
           </section>
           <Input
-            placeholder="yourmail@mail.com"
+            placeholder="Your Email"
+            type="email"
             onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
           <Input
-            placeholder="******"
+            placeholder="Your Password"
+            type="password"
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
           <Button
