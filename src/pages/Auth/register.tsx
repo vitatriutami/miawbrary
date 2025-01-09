@@ -23,15 +23,18 @@ export default function Register() {
             <p>Create an account to get started</p>
           </section>
           <Input
-            placeholder="your name"
+            placeholder="Your Name"
+            type="text"
             onChange={(e) => setUser({ ...user, name: e.target.value })}
           />
           <Input
-            placeholder="yourmail@mail.com"
+            placeholder="Your Email"
+            type="email"
             onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
           <Input
-            placeholder="******"
+            placeholder="Your Password"
+            type="password"
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
           <Button
